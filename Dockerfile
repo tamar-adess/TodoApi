@@ -7,7 +7,9 @@ WORKDIR /src
 # COPY ["TodoApi/TodoApi.csproj", "TodoApi/"]
 COPY ["TodoApi.csproj", "./"]
 
-RUN dotnet restore "TodoApi/TodoApi.csproj"
+# RUN dotnet restore "TodoApi/TodoApi.csproj"
+RUN dotnet restore "TodoApi.csproj"
+
 COPY . .
 WORKDIR "/src/TodoApi"
 RUN dotnet build "TodoApi.csproj" -c Release -o /app/build
