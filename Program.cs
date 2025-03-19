@@ -31,7 +31,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowSpecificOrigin", policy =>
     {
         policy.WithOrigins("https://todoapi-noo0.onrender.com")
-        // https://todoapi-noo0.onrender.com
+  
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials();
