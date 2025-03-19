@@ -134,6 +134,22 @@ builder.Services.AddCors(options =>
     });
 });
 
+
+using (var scope = builder.Services.BuildServiceProvider().CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    try
+    {
+        Console.WriteLine("🔄 מריץ מיגרציות...");
+        db.Database.Migrate();
+        Console.WriteLine("✅ המיגרציות הושלמו בהצלחה!");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"❌ שגיאה בהרצת מיגרציות: {ex.Message}");
+    }
+}
+
 var app = builder.Build();
 
 // 🔹 הפעלת CORS
