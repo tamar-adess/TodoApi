@@ -1,6 +1,7 @@
 import axios from 'axios';
 
- const apiUrl = "http://localhost:5224";  // אם אתה לא רוצה להשתמש ב-HTTPS
+//  const apiUrl = "http://localhost:5224";  // אם אתה לא רוצה להשתמש ב-HTTPS
+const apiUrl = process.env.REACT_APP_API_URL; // אם אתה לא רוצה להשתמש ב-HTTPS
 
 export default {
   getTasks: async () => {
