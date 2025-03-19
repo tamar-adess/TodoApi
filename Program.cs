@@ -5,8 +5,19 @@ using TodoApi.Models; // הייבוא של המחלקות שלך (ApplicationDbC
 var builder = WebApplication.CreateBuilder(args);
 
 // הוספת DbContext לשירותים
+// builder.Services.AddDbContext<ApplicationDbContext>(options =>
+//     options.UseMySQL(builder.Configuration.GetConnectionString("ToDoDB")));
+var connectionString = Environment.GetEnvironmentVariable("ToDoDB") 
+                        ?? builder.Configuration.GetConnectionString("ToDoDB");
+
+if (string.IsNullOrEmpty(connectionString))
+{
+    throw new InvalidOperationException("No connection string found! Check environment variables.");
+}
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseMySQL(builder.Configuration.GetConnectionString("ToDoDB")));
+    options.UseMySQL(connectionString));
+
 
 // הוספת Swagger לשירותים
 builder.Services.AddEndpointsApiExplorer();  // צורך ב-API Explorer
@@ -17,7 +28,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigin", policy =>
     {
-        policy.WithOrigins("http://localhost:3000")  // הכתובת של הלקוח שלך
+        policy.WithOrigins("https://todoapi-noo0.onrender.com")  // הכתובת של הלקוח שלך
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials(); // הוספת אפשרות זו אם נדרש
