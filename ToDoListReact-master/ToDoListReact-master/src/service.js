@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 //  const apiUrl = "http://localhost:5224";  // אם אתה לא רוצה להשתמש ב-HTTPS
-// const apiUrl = process.env.REACT_APP_API_URL; // אם אתה לא רוצה להשתמש ב-HTTPS
-const apiUrl = "https://server-t246.onrender.com";
+const apiUrl = process.env.REACT_APP_API_URL; // אם אתה לא רוצה להשתמש ב-HTTPS
 
 export default {
 //   getTasks: async () => {
@@ -10,18 +9,18 @@ export default {
 //     return result.data;
 //   },
 
-//   addTask: async (name) => {
+  addTask: async (name) => {
     
-//     try {
-//         const result = await axios.post(`${apiUrl}/items`, {
-//             name: name,
-//             isComplete: false  // הוספת מצב ברירת מחדל (לא הושלם)
-//         });
-//         console.log('Task added successfully', result.data);
-//     } catch (error) {
-//         console.error('Error adding task:', error);
-//     }
-// },
+    try {
+        const result = await axios.post(`${apiUrl}/items`, {
+            name: name,
+            isComplete: false  // הוספת מצב ברירת מחדל (לא הושלם)
+        });
+        console.log('Task added successfully', result.data);
+    } catch (error) {
+        console.error('Error adding task:', error);
+    }
+},
 
 getTasks: async () => {
   try {
