@@ -9,18 +9,18 @@ export default {
 //     return result.data;
 //   },
 
-  addTask: async (name) => {
+//   addTask: async (name) => {
     
-    try {
-        const result = await axios.post(`${apiUrl}/items`, {
-            name: name,
-            isComplete: false  // הוספת מצב ברירת מחדל (לא הושלם)
-        });
-        console.log('Task added successfully', result.data);
-    } catch (error) {
-        console.error('Error adding task:', error);
-    }
-},
+//     try {
+//         const result = await axios.post(`${apiUrl}/items`, {
+//             name: name,
+//             isComplete: false  // הוספת מצב ברירת מחדל (לא הושלם)
+//         });
+//         console.log('Task added successfully', result.data);
+//     } catch (error) {
+//         console.error('Error adding task:', error);
+//     }
+// },
 
 getTasks: async () => {
   try {
