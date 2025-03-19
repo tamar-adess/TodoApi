@@ -268,6 +268,8 @@ if (string.IsNullOrEmpty(connectionString))
 }
 
 // 🔹 חיבור למסד הנתונים עם MySQL
+// builder.Services.AddDbContext<ApplicationDbContext>(options =>
+//     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 

@@ -75,8 +75,8 @@ setCompleted: async (id,name, isComplete) => {
   try {
     // שולח רק את השדה 'isComplete' ב-JSON
     const result = await axios.put(`${apiUrl}/items/${id}`, {
-      Name: name,  // אם לא מעדכנים את ה-Name, שלח ערך ריק
-      IsComplete: isComplete  // עדכון של השדה IsComplete בלבד
+      name: name,  
+  isComplete: isComplete 
     }, {
       headers: {
         'Content-Type': 'application/json'  // חשוב שה-Content-Type יהיה json
