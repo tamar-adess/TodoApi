@@ -283,6 +283,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowSpecificOrigin", policy =>
     {
         policy.WithOrigins("https://todoapi-noo0.onrender.com")
+        // https://todoapi-noo0.onrender.com
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials();
@@ -337,6 +338,7 @@ using (var scope = app.Services.CreateScope())
         Console.WriteLine($"❌ שגיאה בחיבור ל-DB: {ex.Message}");
     }
 }
+app.MapGet("/", () => Results.Ok("Server is running!"));
 
 // 🔹 1. שליפת כל הפריטים
 app.MapGet("/items", async (ApplicationDbContext db) =>
