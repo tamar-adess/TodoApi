@@ -5,10 +5,15 @@ function App() {
   const [newTodo, setNewTodo] = useState("");
   const [todos, setTodos] = useState([]);
 
+  // async function getTodos() {
+  //   const todos = await service.getTasks();
+  //   setTodos(todos);
+  // }
   async function getTodos() {
     const todos = await service.getTasks();
-    setTodos(todos);
-  }
+    console.log("🚀 Data from API:", todos); // 🔍 בדיקה
+    setTodos(Array.isArray(todos) ? todos : []); // לוודא שזה מערך
+}
 
   async function createTodo(e) {
     e.preventDefault();

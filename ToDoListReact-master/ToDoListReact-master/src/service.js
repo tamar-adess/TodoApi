@@ -4,25 +4,35 @@ import axios from 'axios';
 const apiUrl = process.env.REACT_APP_API_URL; // אם אתה לא רוצה להשתמש ב-HTTPS
 
 export default {
-  getTasks: async () => {
-    const result = await axios.get(`${apiUrl}/items`)    
-    return result.data;
-  },
+//   getTasks: async () => {
+//     const result = await axios.get(`${apiUrl}/items`)    
+//     return result.data;
+//   },
 
-  addTask: async (name) => {
+//   addTask: async (name) => {
     
-    try {
-        const result = await axios.post(`${apiUrl}/items`, {
-            name: name,
-            isComplete: false  // הוספת מצב ברירת מחדל (לא הושלם)
-        });
-        console.log('Task added successfully', result.data);
-    } catch (error) {
-        console.error('Error adding task:', error);
-    }
-},
+//     try {
+//         const result = await axios.post(`${apiUrl}/items`, {
+//             name: name,
+//             isComplete: false  // הוספת מצב ברירת מחדל (לא הושלם)
+//         });
+//         console.log('Task added successfully', result.data);
+//     } catch (error) {
+//         console.error('Error adding task:', error);
+//     }
+// },
 
-    
+getTasks: async () => {
+  try {
+      const response = await axios.get(`${apiUrl}/items`);
+      console.log("✅ API response:", response.data); // 🔍 בדיקה
+      return Array.isArray(response.data) ? response.data : []; // לוודא שזה מערך
+  } catch (error) {
+      console.error("❌ Error fetching tasks:", error);
+      return []; // במקרה של שגיאה, מחזירים מערך ריק
+  }
+}
+,
 deleteTask: async (id) => {
   try {
     await axios.delete(`${apiUrl}/items/${id}`);
