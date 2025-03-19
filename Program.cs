@@ -381,6 +381,7 @@ app.MapDelete("/items/{id}", async (int id, ApplicationDbContext db) =>
     await db.SaveChangesAsync();
     return Results.NoContent();
 });
+// app.Urls.Add("http://0.0.0.0:10000");
 
 // 🔹 הפעלת השרת
 app.Run();
