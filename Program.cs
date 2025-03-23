@@ -15,9 +15,7 @@ if (string.IsNullOrEmpty(connectionString))
     throw new InvalidOperationException("❌ No connection string found! Check environment variables.");
 }
 
-// 🔹 חיבור למסד הנתונים עם MySQL
-// builder.Services.AddDbContext<ApplicationDbContext>(options =>
-//     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
@@ -133,7 +131,5 @@ app.MapDelete("/items/{id}", async (int id, ApplicationDbContext db) =>
     await db.SaveChangesAsync();
     return Results.NoContent();
 });
-// app.Urls.Add("http://0.0.0.0:10000");
 
-// 🔹 הפעלת השרת
 app.Run();
