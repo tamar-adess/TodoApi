@@ -10,6 +10,10 @@ getTasks: async () => {
 }
 ,
 
+
+
+
+
 addTask: async (name) => {
     
   try {

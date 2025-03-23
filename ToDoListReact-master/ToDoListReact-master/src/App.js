@@ -9,11 +9,29 @@ function App() {
   //   const todos = await service.getTasks();
   //   setTodos(todos);
   // }
+
+
+
+// const todos = await service.getTasks();
+// console.log("✅ API Response:", todos); 
+
+
+
+
+
+
+
+
   async function getTodos() {
     console.log("📡 Fetching from API:", process.env.REACT_APP_API_URL); 
     const todos = await service.getTasks();
     console.log("✅ API Response:", todos); 
-    setTodos(todos);
+   if (!Array.isArray(todos.items)) {
+    console.error("Error: API response is not an array:", todos);
+    return;
+}
+
+setTodos(todos.items);
   }
   
   async function createTodo(e) {
