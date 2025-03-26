@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const apiUrl = process.env.REACT_APP_API_URL; 
+// const apiUrl = process.env.REACT_APP_API_URL; 
+const apiUrl = "https://server-t246.onrender.com"; // הגדרת ה-API ידנית
 
 export default {
 
