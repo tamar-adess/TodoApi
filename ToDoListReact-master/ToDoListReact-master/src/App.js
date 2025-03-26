@@ -10,11 +10,6 @@ function App() {
   //   setTodos(todos);
   // }
 
-
-
-
-
-  
   async function getTodos() {
     console.log("📡 Fetching from API:", process.env.REACT_APP_API_URL); 
     const todos = await service.getTasks();

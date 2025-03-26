@@ -4,11 +4,21 @@ const apiUrl = process.env.REACT_APP_API_URL;
 
 export default {
 
+// getTasks: async () => {
+//       const response = await axios.get(`${apiUrl}/items`);
+//       return response.data; 
+// }
+// ,
 getTasks: async () => {
+  try {
+      console.log("📡 Fetching from API:", `${apiUrl}/items`); 
       const response = await axios.get(`${apiUrl}/items`);
-      return response.data; 
-}
-,
+      console.log("✅ API Response:", response.data);
+      return response.data;
+  } catch (error) {
+      console.error("❌ API Fetch Error:", error);
+  }
+},
 
 
 
