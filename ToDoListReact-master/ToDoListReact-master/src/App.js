@@ -13,7 +13,7 @@ function App() {
   async function getTodos() {
     console.log("📡 Fetching from API:", process.env.REACT_APP_API_URL); 
     const todos = await service.getTasks();
-    console.log("✅ API Response:", todos); 
+    console.log("✅😕 API Response:", todos); 
     setTodos(todos);
   }
   
